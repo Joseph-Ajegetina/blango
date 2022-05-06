@@ -19,7 +19,7 @@ import dj_database_url
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 class Dev(Configuration):
-
+  
   LOGGING = {
     "version": 1,
     "disable_existing_loggers": False,
@@ -89,10 +89,12 @@ class Dev(Configuration):
       'django.contrib.sessions',
       'django.contrib.messages',
       'django.contrib.staticfiles',
+      'blango_auth',
       'blog',
       'crispy_forms',
       'crispy_bootstrap5',
       'debug_toolbar',
+      
   ]
 
   MIDDLEWARE = [
@@ -190,6 +192,8 @@ class Dev(Configuration):
   #crispy_bootstrap5
   CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
   CRISPY_TEMPLATE_PACK = "bootstrap5"
+
+  AUTH_USER_MODEL = "blango_auth.User"
 
 
 class Prod(Dev):
