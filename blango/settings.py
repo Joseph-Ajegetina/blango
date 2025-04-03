@@ -59,6 +59,7 @@ class Dev(Configuration):
       'crispy_bootstrap5',
       'rest_framework',
       'rest_framework.authtoken',
+      'drf_yasg',
       'debug_toolbar',
       "allauth",
       "allauth.account",
@@ -97,17 +98,6 @@ class Dev(Configuration):
   ]
 
   WSGI_APPLICATION = 'blango.wsgi.application'
-
-  REST_FRAMEWORK = {
-    "DEFAULT_AUTHENTICATION_CLASSES": [
-        "rest_framework.authentication.BasicAuthentication",
-        "rest_framework.authentication.SessionAuthentication",
-        "rest_framework.authentication.TokenAuthentication",
-    ],
-        "DEFAULT_PERMISSION_CLASSES": [
-        "rest_framework.permissions.IsAuthenticatedOrReadOnly"
-    ],
-}
 
 
   # Database
@@ -242,3 +232,21 @@ class Prod(Dev):
         default=f"sqlite:///{BASE_DIR}/alternative_db.sqlite3",
     ),
 }
+
+REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "rest_framework.authentication.BasicAuthentication",
+        "rest_framework.authentication.SessionAuthentication",
+        "rest_framework.authentication.TokenAuthentication",
+    ],
+        "DEFAULT_PERMISSION_CLASSES": [
+        "rest_framework.permissions.IsAuthenticatedOrReadOnly"
+    ],
+}
+
+SWAGGER_SETTINGS = {
+        "SECURITY_DEFINITIONS": {
+            "Token": {"type": "apiKey", "name": "Authorization", "in": "header"},
+            "Basic": {"type": "basic"},
+        }
+    }
