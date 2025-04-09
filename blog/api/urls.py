@@ -33,11 +33,11 @@ urlpatterns = format_suffix_patterns(urlpatterns)
 urlpatterns += [
   path("auth/",include("rest_framework.urls")),
   path("", include(router.urls)),
-path("token-auth/", views.obtain_auth_token), 
-re_path(
-  r"^swagger(?P<format>\.json|\.yaml)$",
-  schema_view.without_ui(cache_timeout=0),
-  name="schema-json"
-), 
-path("swagger/", schema_view.with_ui("swagger", cache_timeout=0), 
-name="schema-swagger-ui")]
+  path("token-auth/", views.obtain_auth_token), 
+  re_path(
+    r"^swagger(?P<format>\.json|\.yaml)$",
+    schema_view.without_ui(cache_timeout=0),
+    name="schema-json"
+  ), 
+  path("swagger/", schema_view.with_ui("swagger", cache_timeout=0), 
+  name="schema-swagger-ui")]
