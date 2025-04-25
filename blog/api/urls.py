@@ -23,8 +23,8 @@ schema_view = get_schema_view(openapi.Info(
 ))
 
 urlpatterns = [
-    path("posts/", PostList.as_view(), name="api_post_list"),
-    path("posts/<int:pk>", PostDetail.as_view(), name="api_post_detail"),
+    # path("posts/", PostList.as_view(), name="api_post_list"),
+    # path("posts/<int:pk>", PostDetail.as_view(), name="api_post_detail"),
     path("users/<str:email>", UserDetail.as_view(), name="api_user-detail")
 ]
 
@@ -33,6 +33,7 @@ urlpatterns = format_suffix_patterns(urlpatterns)
 urlpatterns += [
   path("auth/",include("rest_framework.urls")),
   path("", include(router.urls)),
+  path("posts/by-time/<str:period_name>/", PostViewSet.as_view({"get": "list"}), name="posts-by-time"),
   path("token-auth/", views.obtain_auth_token), 
   re_path(
     r"^swagger(?P<format>\.json|\.yaml)$",
