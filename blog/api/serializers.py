@@ -23,7 +23,7 @@ class PostSerializer(serializers.ModelSerializer):
     )
 
     author = serializers.HyperlinkedRelatedField(
-        queryset=User.objects.all(), view_name="api_user_detail", lookup_field="email"
+        queryset=User.objects.all(), view_name="api_user-detail", lookup_field="email"
     )
 
     class Meta:
