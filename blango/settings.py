@@ -54,6 +54,7 @@ class Dev(Configuration):
       "django.contrib.sites",
       'django.contrib.staticfiles',
       'blango_auth',
+      'django_filters',
       'blog',
       'crispy_forms',
       'crispy_bootstrap5',
@@ -253,7 +254,13 @@ REST_FRAMEWORK = {
       "anon_burst": "10/minute",
       "user_burst": "100/minute",
       "user_sustained":"500/day"
-    }
+    }, 
+    "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination", 
+    "PAGE_SIZE": 100,
+    "DEFAULT_FILTER_BACKENDS": [
+        "django_filters.rest_framework.DjangoFilterBackend", 
+        "rest_framework.filters.OrderingFilter"
+    ]
 }
 
 SWAGGER_SETTINGS = {
