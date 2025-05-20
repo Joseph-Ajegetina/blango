@@ -20,10 +20,12 @@ from datetime import timedelta
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 class Dev(Configuration):
-    SIMPLE_JWT = {
+  SIMPLE_JWT = {
         "ACCESS_TOKEN_LIFETIME": timedelta(days=1),
         "REFRESH_TOKEN_LIFETIME": timedelta(days=7),
     }
+  MEDIA_ROOT = BASE_DIR/"media"
+  MEDIA_URL = "/media/"
   
 
   
@@ -60,6 +62,7 @@ class Dev(Configuration):
       'django.contrib.staticfiles',
       'blango_auth',
       'django_filters',
+      'versatileimagefield',
       'blog',
       'crispy_forms',
       'crispy_bootstrap5',
